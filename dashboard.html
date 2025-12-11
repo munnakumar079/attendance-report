@@ -1,14 +1,9 @@
-<!--
-  Filename: index.html
-  Use: Employee Attendance - Next Level UI (Bootstrap 5)
-  Instructions: Copy paste and open in browser. Comments in Hinglish.
--->
 <!doctype html>
 <html lang="hi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Attendance Pro — Next Level Dashboard</title>
+  <title>Employee Attendance</title>
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +12,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    /* ===== GLOBAL STYLING (Next-level look) ===== */
     :root{
       --primary:#1a73e8;
       --glass-bg: rgba(255,255,255,0.75);
@@ -35,6 +29,7 @@
     #sidebar{
       min-width: 240px;
       max-width: 240px;
+      height: 100vh;
       background: var(--glass-bg);
       backdrop-filter: blur(8px);
       border-right: 1px solid rgba(0,0,0,0.04);
@@ -57,10 +52,7 @@
       align-items:center;
       gap:16px;
     }
-    .search-input{
-      width: 320px;
-      max-width: 60%;
-    }
+
     .avatar{
       width:44px; height:44px; border-radius:10px;
       background-image:url('https://i.pravatar.cc/100'); background-size:cover;
@@ -78,17 +70,6 @@
     .stat-number{ font-weight:700; font-size:1.6rem; color:var(--primary); }
 
     /* TABLE */
-    .table thead th{
-      background: linear-gradient(90deg,#1a73e8,#6b9cff);
-      color:white; border:0;
-    }
-    .status-dot{ width:10px; height:10px; display:inline-block; border-radius:50%; margin-right:8px; }
-    .present{ background:#28a745; }
-    .absent{ background:#dc3545; }
-    .leave{ background:#ffc107; }
-
-    /* CALENDAR (simple placeholder grid) */
-    .cal-day{ min-height:90px; border-radius:10px; padding:8px; background:white; box-shadow:var(--card-shadow); }
 
     /* RESPONSIVE SIDEBAR COLLAPSE */
     @media (max-width: 991.98px){
@@ -109,9 +90,9 @@
   <!-- SIDEBAR -->
   <nav id="sidebar" class="p-3">
     <div class="d-flex align-items-center mb-3">
-      <div class="me-2" style="width:44px;height:44px;border-radius:10px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;">AP</div>
+      <div class="me-2" style="width:44px;height:44px;border-radius:10px;background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;">AS</div>
       <div>
-        <div class="sidebar-brand">Attendance Pro</div>
+        <div class="sidebar-brand">Attendance Sheet</div>
         <div style="font-size:12px;color:#6b7280">HR & Attendance</div>
       </div>
     </div>
@@ -124,12 +105,9 @@
       <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="#markSection"><i class="bi bi-file-earmark-check"></i> Mark Attendance</a></li>
       <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="#calendarSection"><i class="bi bi-calendar3"></i> Calendar</a></li>
       <li class="nav-item mb-1"><a class="nav-link d-flex align-items-center gap-2" href="#reportsSection"><i class="bi bi-bar-chart-line"></i> Reports</a></li>
-      <li class="nav-item mt-3"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+      <li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="#"><i class="bi bi-gear"></i> Settings</a></li>
     </ul>
 
-    <div class="mt-auto pt-3">
-      <small class="text-muted">© 2025 Attendance Pro</small>
-    </div>
   </nav>
 
   <!-- CONTENT -->
@@ -140,12 +118,6 @@
       <div class="d-flex align-items-center gap-3">
         <button id="btnToggle" class="btn btn-light d-lg-none"><i class="bi bi-list"></i></button>
         <h4 class="mb-0 d-none d-lg-block">Dashboard</h4>
-
-        <!-- search - small devices will shrink -->
-        <div class="input-group search-input d-none d-md-flex">
-          <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
-          <input id="searchInput" class="form-control" placeholder="Search employee, id, department..." />
-        </div>
       </div>
 
       <div class="d-flex align-items-center gap-3">
@@ -159,7 +131,7 @@
 
       <!-- STAT CARDS -->
       <div class="row g-3">
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-4">
           <div class="stat-card">
             <div class="d-flex justify-content-between">
               <div>
@@ -174,7 +146,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-4">
           <div class="stat-card">
             <div class="d-flex justify-content-between">
               <div>
@@ -189,7 +161,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-4">
           <div class="stat-card">
             <div class="d-flex justify-content-between">
               <div>
@@ -203,346 +175,17 @@
             <div class="mt-2"><small class="text-muted">On-time vs Late analysis</small></div>
           </div>
         </div>
-
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="stat-card">
-            <div class="d-flex justify-content-between">
-              <div>
-                <small class="text-muted">On Leave</small>
-                <div class="stat-number">4</div>
-              </div>
-              <div class="text-end">
-                <i class="bi bi-calendar-x" style="font-size:28px;color:#ffc107"></i>
-              </div>
-            </div>
-            <div class="mt-2"><small class="text-muted">Planned leaves today</small></div>
-          </div>
-        </div>
       </div>
 
       <!-- EMPLOYEE TABLE & MARK ATTENDANCE -->
-      <div class="row g-4 mt-2">
-        <div class="col-12 col-lg-8">
-          <div id="employeesSection" class="card p-3">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="mb-0">Employees</h5>
-              <div>
-                <!-- Search for small screens -->
-                <div class="d-flex d-md-none">
-                  <input id="mobileSearch" class="form-control form-control-sm me-2" placeholder="Search..." />
-                </div>
-                <button class="btn btn-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#markModal"><i class="bi bi-person-check me-1"></i> Mark Attendance</button>
-                <button class="btn btn-outline-secondary btn-sm ms-1"><i class="bi bi-cloud-arrow-down me-1"></i> Export</button>
-              </div>
-            </div>
-
-            <div class="table-responsive">
-              <table class="table align-middle">
-                <thead>
-                  <tr>
-                    <th>Employee</th>
-                    <th>Department</th>
-                    <th>In Time</th>
-                    <th>Out Time</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="employeesTbody">
-                  <!-- Example rows - in real app generate dynamically -->
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img src="https://i.pravatar.cc/40?img=3" class="rounded-circle" alt="" />
-                        <div>
-                          <div class="fw-bold">Rahul Kumar</div>
-                          <small class="text-muted">ID: 101</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>IT</td>
-                    <td>09:05 AM</td>
-                    <td>—</td>
-                    <td><span class="status-dot present"></span><small class="fw-bold text-success">Present</small></td>
-                    <td>
-                      <button class="btn btn-sm btn-flat" onclick="openMarkQuick(this)" data-id="101" data-name="Rahul Kumar">Quick</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img src="https://i.pravatar.cc/40?img=5" class="rounded-circle" alt="" />
-                        <div>
-                          <div class="fw-bold">Amit Singh</div>
-                          <small class="text-muted">ID: 102</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>HR</td>
-                    <td>—</td>
-                    <td>—</td>
-                    <td><span class="status-dot absent"></span><small class="fw-bold text-danger">Absent</small></td>
-                    <td>
-                      <button class="btn btn-sm btn-flat" onclick="openMarkQuick(this)" data-id="102" data-name="Amit Singh">Quick</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img src="https://i.pravatar.cc/40?img=6" class="rounded-circle" alt="" />
-                        <div>
-                          <div class="fw-bold">Sunita Verma</div>
-                          <small class="text-muted">ID: 103</small>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Finance</td>
-                    <td>09:15 AM</td>
-                    <td>—</td>
-                    <td><span class="status-dot present"></span><small class="fw-bold text-success">Present</small></td>
-                    <td>
-                      <button class="btn btn-sm btn-flat" onclick="openMarkQuick(this)" data-id="103" data-name="Sunita Verma">Quick</button>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
-
-            <!-- pagination UI (static) -->
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <small class="text-muted">Showing 1-10 of 128</small>
-              <nav>
-                <ul class="pagination pagination-sm mb-0">
-                  <li class="page-item disabled"><a class="page-link">Prev</a></li>
-                  <li class="page-item active"><a class="page-link">1</a></li>
-                  <li class="page-item"><a class="page-link">2</a></li>
-                  <li class="page-item"><a class="page-link">Next</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: Quick Reports / Calendar -->
-        <div class="col-12 col-lg-4">
-          <div class="card p-3 mb-3">
-            <h6 class="mb-3">Quick Reports</h6>
-            <div class="d-flex flex-column gap-2">
-              <button class="btn btn-light d-flex justify-content-between align-items-center" onclick="downloadCSV('daily')">
-                Daily Report <span class="badge bg-primary">PDF</span>
-              </button>
-              <button class="btn btn-light d-flex justify-content-between align-items-center" onclick="downloadCSV('monthly')">
-                Monthly Report <span class="badge bg-primary">XLSX</span>
-              </button>
-              <button class="btn btn-light d-flex justify-content-between align-items-center" onclick="downloadCSV('employee')">
-                Employee-wise <span class="badge bg-primary">CSV</span>
-              </button>
-            </div>
-          </div>
-
-          <div id="calendarSection" class="card p-3">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <h6 class="mb-0">Attendance Calendar</h6>
-              <small class="text-muted">June 2025</small>
-            </div>
-
-            <!-- simple calendar grid -->
-            <div class="row g-2">
-              <!-- 7 columns per week -->
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Sun</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Mon</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Tue</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Wed</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Thu</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Fri</div>
-              </div>
-              <div class="col-3 col-sm-2 col-md-2">
-                <div class="cal-day text-muted small">Sat</div>
-              </div>
-              <!-- example date boxes (you can loop dynamically in real app) -->
-              <div class="col-3 col-sm-2 col-md-2"><div class="cal-day">1<br><small class="text-success">P: 20</small></div></div>
-              <div class="col-3 col-sm-2 col-md-2"><div class="cal-day">2<br><small class="text-success">P: 22</small></div></div>
-              <div class="col-3 col-sm-2 col-md-2"><div class="cal-day">3<br><small class="text-danger">A: 2</small></div></div>
-              <!-- more dates... -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MARK SECTION (detailed) -->
-      <div id="markSection" class="row g-4 mt-3">
-        <div class="col-12">
-          <div class="card p-3">
-            <h5 class="mb-3">Mark Attendance (Bulk)</h5>
-            <div class="mb-2">
-              <label class="form-label">Choose Date</label>
-              <input type="date" class="form-control w-auto d-inline-block" id="bulkDate" value="">
-              <button class="btn btn-primary btn-sm ms-2" onclick="applyBulk('Present')">Mark All Present</button>
-              <button class="btn btn-danger btn-sm ms-1" onclick="applyBulk('Absent')">Mark All Absent</button>
-            </div>
-
-            <div class="table-responsive mt-3">
-              <table class="table">
-                <thead>
-                  <tr><th>Employee</th><th>Today Status</th><th>Action</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Rahul Kumar</td><td><span class="badge bg-success">Present</span></td><td><button class="btn btn-sm btn-outline-secondary">Edit</button></td></tr>
-                  <tr><td>Amit Singh</td><td><span class="badge bg-danger">Absent</span></td><td><button class="btn btn-sm btn-outline-secondary">Edit</button></td></tr>
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- REPORTS SECTION -->
-      <div id="reportsSection" class="row g-3 mt-3">
-        <div class="col-12">
-          <div class="card p-3">
-            <h5>Detailed Reports</h5>
-            <div class="row mt-2">
-              <div class="col-md-4">
-                <label class="form-label">Select Month</label>
-                <input type="month" class="form-control" id="reportMonth" />
-              </div>
-              <div class="col-md-4">
-                <label class="form-label">Department</label>
-                <select class="form-select">
-                  <option>All</option>
-                  <option>IT</option>
-                  <option>HR</option>
-                  <option>Finance</option>
-                </select>
-              </div>
-              <div class="col-md-4 d-flex align-items-end">
-                <button class="btn btn-primary" style="margin-left:auto">Generate Report</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div> <!-- container -->
   </div> <!-- content -->
 </div> <!-- main flex -->
 
-<!-- MARK ATTENDANCE MODAL (Quick) -->
-<div class="modal fade" id="markModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h6 class="modal-title">Mark Attendance</h6>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- agar kisi specific user pe quick mark karna ho -->
-        <div id="quickInfo" class="mb-2">
-          <div class="fw-bold" id="quickName">Select Employee</div>
-          <small class="text-muted" id="quickId">ID: -</small>
-        </div>
 
-        <div class="d-grid gap-2">
-          <button class="btn btn-success" onclick="markQuick('Present')"><i class="bi bi-check2-circle me-1"></i> Present</button>
-          <button class="btn btn-warning" onclick="markQuick('Half Day')"><i class="bi bi-clock-history me-1"></i> Half Day</button>
-          <button class="btn btn-danger" onclick="markQuick('Absent')"><i class="bi bi-x-circle me-1"></i> Absent</button>
-          <button class="btn btn-outline-secondary" onclick="markQuick('Leave')"><i class="bi bi-calendar-x me-1"></i> Leave</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- BOOTSTRAP JS (bundle includes Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  // ====== Sidebar toggle for mobile ======
-  const btnToggle = document.getElementById('btnToggle');
-  const sidebar = document.getElementById('sidebar');
-  btnToggle && btnToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('show');
-  });
-
-  // ====== Quick mark modal helper ======
-  function openMarkQuick(btn){
-    // jab "Quick" button pe click ho
-    const id = btn.getAttribute('data-id');
-    const name = btn.getAttribute('data-name');
-    document.getElementById('quickName').innerText = name;
-    document.getElementById('quickId').innerText = 'ID: ' + id;
-    // show modal
-    const markModal = new bootstrap.Modal(document.getElementById('markModal'));
-    markModal.show();
-  }
-
-  function markQuick(status){
-    // simple UI feedback only (demo)
-    alert('Marked as ' + status + ' (Demo mode)');
-    // close modal
-    const modalEl = document.getElementById('markModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide();
-  }
-
-  // ====== Bulk apply (demo) ======
-  function applyBulk(status){
-    const date = document.getElementById('bulkDate').value || 'today';
-    if(confirm('Mark all as ' + status + ' for ' + date + '?')){
-      alert('All marked as ' + status + ' (Demo mode)');
-    }
-  }
-
-  // ====== Export / Download placeholder ======
-  function downloadCSV(type){
-    alert('Downloading ' + type + ' report (Demo).');
-  }
-
-  // ====== Simple search filter for employees (client-side demo) ======
-  document.getElementById('searchInput')?.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    filterEmployees(q);
-  });
-  document.getElementById('mobileSearch')?.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    filterEmployees(q);
-  });
-
-  function filterEmployees(q){
-    const tbody = document.getElementById('employeesTbody');
-    const rows = Array.from(tbody.querySelectorAll('tr'));
-    rows.forEach(r => {
-      const text = r.innerText.toLowerCase();
-      r.style.display = text.includes(q) ? '' : 'none';
-    });
-  }
-
-  // ====== Set default date to today in bulkDate input ======
-  (function setToday(){
-    const dt = new Date();
-    const yyyy = dt.getFullYear();
-    const mm = String(dt.getMonth()+1).padStart(2,'0');
-    const dd = String(dt.getDate()).padStart(2,'0');
-    const today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById('bulkDate').value = today;
-  })();
-
-</script>
 
 </body>
 </html>
