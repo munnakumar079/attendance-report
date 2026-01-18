@@ -151,7 +151,7 @@
 
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="page-title">👨‍💼 Employee List</h2>
+        <h2 class="page-title">👨‍💼 Attendance Sheet</h2>
         <button class="btn btn-primary btn-add" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
   + Add Employee
 </button>
@@ -164,7 +164,7 @@
  <div class="card card-custom p-4 mb-4">
   <div class="row g-3 align-items-end">
 
-    <div class="col-md-4">
+    <div class="col-md-9">
       <label class="form-label">Select Employee</label>
       <select id="employeeSelect" class="form-select">
         <option value="">-- Select Employee --</option>
@@ -175,16 +175,6 @@
     </div>
 
     <div class="col-md-3">
-      <label class="form-label">Attendance Date</label>
-      <input type="text" id="attendanceDate" class="form-control" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <label class="form-label">Attendance Time</label>
-      <input type="text" id="attendanceTime" class="form-control" readonly>
-    </div>
-
-    <div class="col-md-2">
       <button class="btn btn-primary w-100" id="markPresentBtn">
         Mark Present
       </button>
